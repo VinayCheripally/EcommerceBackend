@@ -20,9 +20,22 @@ const cartcontroller = {
     },
   
     addToCart: (req, res) => {
-        cart.find({userId:req.body.username})
+      const user = user.findOne({username:req.body.username})
+        .then(()=>{
+          res.send("found user");
+        })
+        .catch(()=>{
+          res.send("error");
+        })
+
+        const newItem = { productId, quantity };
+        cart.find({userId:user._id})
         .then((cart)=>{
-            cart.items
+            cart.items.push(newItem);
+            res.send("added to cart");
+        })
+        .catch(()=>{
+          res.send("error adding into cart");
         })
     }
   };
