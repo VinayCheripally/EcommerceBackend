@@ -1,34 +1,38 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const orderitemschema = new mongoose.Schema({
-    productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'product',
-        required: true
-    },
-    quantity: {
-        type: Number,
-        required: true
-    }
+  productId: Number,
+  quantity: {
+    type: Number,
+    required: true,
+  },
 });
 
 const orderschema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
-    },
-    items: [orderitemschema],
-    totalPrice: {
-        type: Number,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+  orderId: Number,
+  items: [orderitemschema],
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  userId: Number,
+  billAddress: String,
+  delivered: Boolean,
 });
 
-const order = mongoose.model('order', orderschema);
+orderschema.pre("save", async function (next) {
+  const doc = this;
+  if (!doc.orderId) {
+    const maxOrderId = await mongoose
+      .model("order")
+      .find()
+      .sort({ orderId: -1 })
+      .limit(1);
+    doc.orderId = maxOrderId.length === 0 ? 1 : maxOrderId[0].orderId + 1;
+  }
+  next();
+});
+
+const order = mongoose.model("order", orderschema);
 
 module.exports = order;
