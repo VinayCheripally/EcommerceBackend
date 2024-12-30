@@ -1,5 +1,3 @@
-# task-manager
-
 E-commerce Backend
 
 ---
@@ -35,9 +33,3 @@ E-commerce Backend
    ```bash
    node server.js
    ```
-
-example command
-
-```bash
-python main.py add-todo -n "Buy Milk" -d "Buy milk from store" --due 2024-12-31_18:00:00 m
-```
