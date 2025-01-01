@@ -12,6 +12,8 @@ const authController = require("../controllers/authController");
  * @swagger
  * /api/register:
  *   post:
+ *     tags:
+ *      - Authentication
  *     summary: Register a new user
  *     description: Endpoint to register a new user
  *     requestBody:
@@ -41,6 +43,8 @@ const authController = require("../controllers/authController");
  * @swagger
  * /api/login:
  *   post:
+ *     tags:
+ *        - Authentication
  *     summary: login for a user
  *     description: Endpoint for a user to login
  *     requestBody:

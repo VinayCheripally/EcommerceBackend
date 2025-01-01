@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
 const orderController = require("../controllers/ordercontroller");
+
 /**
  * @swagger
  * tags:
@@ -13,6 +13,8 @@ const orderController = require("../controllers/ordercontroller");
  * @swagger
  * /api/order/place:
  *   post:
+ *     tags:
+ *        - Orders
  *     summary: Place a new order
  *     requestBody:
  *       required: true
@@ -37,6 +39,8 @@ const orderController = require("../controllers/ordercontroller");
  * @swagger
  * /api/order/updateAddress:
  *   put:
+ *     tags:
+ *          - Orders
  *     summary: Update address
  *     requestBody:
  *       required: true
@@ -64,6 +68,8 @@ const orderController = require("../controllers/ordercontroller");
  * @swagger
  * /api/order/updateDeliveryStatus:
  *   put:
+ *     tags:
+ *        - Orders
  *     summary: Update Delivery Status
  *     requestBody:
  *       required: true
@@ -85,6 +91,8 @@ const orderController = require("../controllers/ordercontroller");
  * @swagger
  * /api/order/cancel:
  *   delete:
+ *     tags:
+ *        - Orders
  *     summary: delete order
  *     requestBody:
  *       required: true
@@ -109,6 +117,8 @@ const orderController = require("../controllers/ordercontroller");
  * @swagger
  * /api/order/{orderId}:
  *   get:
+ *     tags:
+ *          - Orders
  *     summary: Get details of a specific order
  *     parameters:
  *       - in: path
