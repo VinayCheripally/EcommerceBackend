@@ -27,12 +27,14 @@ const categoryRoutes = require("./src/routes/category");
 const productRoutes = require("./src/routes/product");
 const cartRoutes = require("./src/routes/cart");
 const orderRoutes = require("./src/routes/order");
+const paymentRoutes = require("./src/routes/payment");
 
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", cartRoutes);
 app.use("/api", orderRoutes);
+app.use("/api", paymentRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
