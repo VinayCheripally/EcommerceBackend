@@ -20,7 +20,6 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const authRoutes = require("./src/routes/auth");
 const categoryRoutes = require("./src/routes/category");
@@ -35,6 +34,8 @@ app.use("/api", productRoutes);
 app.use("/api", cartRoutes);
 app.use("/api", orderRoutes);
 // app.use("/api", paymentRoutes);
+
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
