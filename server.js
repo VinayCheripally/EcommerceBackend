@@ -20,7 +20,7 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const authRoutes = require("./src/routes/auth");
 const categoryRoutes = require("./src/routes/category");
