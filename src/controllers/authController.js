@@ -19,7 +19,6 @@ const authController = {
       .findOne({ username: req.body.username, password: req.body.password })
       .then((foundUser) => {
         if (foundUser) {
-          console.log(foundUser);
           res.status(200).send("Login successful!"); // 200 OK
         } else {
           res.status(400).send("Incorrect login details."); // 401 Unauthorized
